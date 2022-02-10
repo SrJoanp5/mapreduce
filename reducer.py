@@ -4,7 +4,7 @@ import sys
 current_word = None
 current_count = 0
 max_len= 0
-min_len= 0
+min_len= 1000
 word = None
 
 # input comes from STDIN
