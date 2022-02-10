@@ -34,4 +34,4 @@ for line in input_stream:
         letra = word[0:1]
       #Optimització: si la lletra es troba dins l'alfabet llatí i les lletres ç o ñ.
         if letra in list('abcdefghijklmnñopqrstuvwxyzç'):
-          print('%s\t%s\t%s\t%s' % (letra, 1, len(word), len(word))
+           print('%s\t%s\t%s\t%s' % (letra, 1, len(word), len(word))
