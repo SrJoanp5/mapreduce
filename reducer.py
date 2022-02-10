@@ -42,7 +42,8 @@ for line in sys.stdin:
             print ('%s\t%s\t%s\t%s' % (current_word, current_count, max_len, min_len))
         current_count = count
         current_word = word
-
+        max_len=max_word_len
+        min_len=min_word_len
 # do not forget to output the last word if needed!
 if current_word == word:
     if max_word_len>max_len:
