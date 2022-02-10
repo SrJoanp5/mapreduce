@@ -15,6 +15,7 @@ input_stream = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 for line in input_stream:
   line = line.strip()
   line = re.sub(r'[^\w\s]', '',line)
+  #Optimització: pasam tot a minuscules, perque no ha de distingir de majúscules i minúscules.
   line = line.lower()
   for x in line:
     if x in punctuations:
@@ -23,7 +24,7 @@ for line in input_stream:
   words=line.split()
   for word in words: 
     if word not in stop_words:
-      #Si tenen accents o simbols damunt la lletra, te la converteix en una lletra normal.
+      #Optimització: Perque la paraula no ha de distingir de si te la primera lletra accentuada o no, però deixam la ñ com a excepció.
         word = re.sub(
                 r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1", 
                 normalize( "NFD", word), 0, re.I
@@ -31,6 +32,6 @@ for line in input_stream:
         word = normalize( 'NFC', word)
       #Agafam la primera lletra de la paraula, per veure amb quina lletra comença.  
         letra = word[0:1]
-      #Si la lletra es troba dins l'alfabet i les lletres ç o ñ.
+      #Optimització: si la lletra es troba dins l'alfabet llatí i les lletres ç o ñ.
         if letra in list('abcdefghijklmnñopqrstuvwxyzç'):
           print('%s\t%s' % (letra, 1))
